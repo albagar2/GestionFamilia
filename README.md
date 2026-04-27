@@ -2,9 +2,9 @@
 
 Una aplicación full-stack premium para la gestión financiera familiar y patrimonial, diseñada para el control de múltiples propiedades, gastos recurrentes y sincronización inteligente entre aplicaciones.
 
-## ✨ Características Especiales (Nuevas)
-- **Gestión Multi-Propiedad**: Controla gastos por vivienda (Málaga, Lucena, Mijas, etc.).
-- **Sincronización con Gasoil**: Integración automática con la app de combustible de la familia.
+## ✨ Características Especiales
+- **Gestión Multi-Propiedad**: Controla gastos por vivienda (Principal, Apartamento, Chalet, etc.).
+- **Sincronización Inteligente**: Integración automática con otras aplicaciones de la familia (ej. combustible).
 - **Gestión de Recibos**: Sube y visualiza imágenes de tickets y facturas directamente desde el dashboard.
 - **Alertas de Impuestos**: Calendario de vencimientos para IBI, contribuciones y seguros.
 - **Gastos Recurrentes**: Identificación visual de gastos fijos mensuales.
@@ -15,27 +15,21 @@ Una aplicación full-stack premium para la gestión financiera familiar y patrim
 
 ### 1. Requisitos Previos
 - **Node.js v18+** instalado.
-- Ambas aplicaciones (`GastosFamiliares` y `controlGasoilFamiliar`) deben estar en la misma red local (normalmente `localhost`).
+- Las aplicaciones deben estar en la misma red local (normalmente `localhost`).
 
-### 2. Preparación del Backend (GastosFamiliares)
+### 2. Preparación del Backend
 Desde la carpeta `backend`:
 1. Instala dependencias: `npm install`
-2. Asegúrate de tener el `.env` configurado (ya lo hemos hecho por ti).
+2. Configura el archivo `.env` (basado en `.env.example`).
 3. Sincroniza la base de datos (SQLite): `npx prisma migrate dev`
-4. **Sembrar datos iniciales** (Propiedades y gastos base): `npx prisma db seed`
-5. Lanza el servidor: `npm run dev` (Correrá en el puerto **3001**).
+4. **Sembrar datos iniciales**: `npx prisma db seed`
+5. Lanza el servidor: `npm run dev` (Puerto **3001**).
 
-### 3. Preparación del Frontend (GastosFamiliares)
+### 3. Preparación del Frontend
 Desde la carpeta `frontend`:
 1. Instala dependencias: `npm install`
-2. Lanza la web: `npm run dev` (Correrá en el puerto **3000**).
+2. Lanza la web: `npm run dev` (Puerto **3000**).
 3. Accede a: `http://localhost:3000`
-
-### 4. Conexión con la App de Gasoil
-Para que la sincronización funcione, la app de Gasoil debe estar configurada:
-1. Ve a `controlGasoilFamiliar/backend`.
-2. Lanza el servidor: `npm run dev` (Correrá en el puerto **3002**).
-3. Cada vez que añadas un repostaje en esa app, verás aparecer el gasto automáticamente en **FamilyGasto**.
 
 ---
 
@@ -48,16 +42,18 @@ Para que la sincronización funcione, la app de Gasoil debe estar configurada:
   - `src/app`: Dashboard premium con React Hooks y Lucide Icons.
 - **uploads/**: Carpeta donde se guardan físicamente tus recibos.
 
+---
+
 ## 🛡️ Seguridad
-- **Internal Sync Key**: Solo aplicaciones autorizadas con tu clave secreta pueden enviar gastos al sistema.
-- **Multer Filter**: Solo se permiten imágenes y PDFs para evitar archivos maliciosos.
+- **Internal Sync Key**: Solo aplicaciones autorizadas con clave secreta pueden enviar datos al sistema.
+- **Filtro de Archivos**: Solo se permiten imágenes y PDFs para evitar archivos maliciosos.
 - **Prisma**: Protección nativa contra inyecciones SQL.
+- **Variables de Entorno**: Datos sensibles nunca se suben al repositorio.
 
 ---
 
 ## 👨‍🏫 Manual de Usuario Rápido
 1. **Ver Recibos**: Haz clic en el icono verde `+` en la lista de gastos para ver el archivo adjunto.
 2. **Subir Recibo**: Haz clic en el icono gris tenue `+` de cualquier gasto para subir su factura.
-3. **Alertas**: Revisa la tarjeta de "Alertas Próximas" para no olvidar el pago del IBI o la Contribución.
-4. **Propiedades**: Usa el panel lateral para ver cuántos gastos tiene acumulados cada una de tus casas.
-"# GestionFamilia" 
+3. **Alertas**: Revisa la tarjeta de "Alertas Próximas" para no olvidar pagos importantes.
+4. **Propiedades**: Usa el panel lateral para filtrar gastos por propiedad.

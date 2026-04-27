@@ -3,7 +3,13 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { PrismaUserRepository } from '../../database/PrismaUserRepository';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'super-secret-key';
+const JWT_SECRET = process.env.JWT_SECRET;
+
+if (!JWT_SECRET) {
+  throw new Error('JWT_SECRET must be defined in environment variables');
+}
+
+const SECRET = JWT_SECRET;
 
 export class AuthController {
   private userRepository = new PrismaUserRepository();
@@ -24,7 +30,7 @@ export class AuthController {
 
       const token = jwt.sign(
         { id: user.id, familyId: user.familyId, role: user.role },
-        JWT_SECRET,
+        SECRET,
         { expiresIn: '24h' }
       );
 

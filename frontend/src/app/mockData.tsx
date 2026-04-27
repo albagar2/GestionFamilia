@@ -9,13 +9,13 @@ export const categories = [
 ];
 
 export const properties = [
-  { name: 'CALERA 43', expenses: 12 },
-  { name: 'MALAGA', expenses: 5 },
-  { name: 'LUCENA', expenses: 3 },
-  { name: 'MIJAS', expenses: 8 },
-  { name: 'CALERA 14', expenses: 4 },
-  { name: 'TETUÁN 5', expenses: 6 },
-  { name: 'SCENI', expenses: 2 },
+  { name: 'CASA PRINCIPAL', expenses: 12 },
+  { name: 'APARTAMENTO', expenses: 5 },
+  { name: 'ESTUDIO', expenses: 3 },
+  { name: 'CHALET', expenses: 8 },
+  { name: 'LOCAL', expenses: 4 },
+  { name: 'GARAJE', expenses: 6 },
+  { name: 'VEHICULOS', expenses: 2 },
 ];
 
 export const cards = [
@@ -25,7 +25,7 @@ export const cards = [
 ];
 
 export const recentExpenses = [
-  { id: '1', title: 'Luz - Calera 43', amount: 85.20, property: 'Calera 43', date: 'Hoy', status: 'pending', isRecurring: true, paymentMethodId: 'card-1', receiptUrl: 'http://localhost:3001/uploads/demo-recibo.pdf' },
-  { id: '2', title: 'Hipoteca - Málaga', amount: 850.00, property: 'Málaga', date: 'Ayer', status: 'paid', isRecurring: true, paymentMethodId: 'card-2', receiptUrl: null },
-  { id: '3', title: 'Reparación Motor', amount: 450.00, property: 'Sceni', date: '22 Abr', status: 'paid', paymentMethodId: 'card-1', receiptUrl: 'http://localhost:3001/uploads/demo-taller.jpg' },
+  { id: '1', title: 'Luz - Casa Principal', amount: 85.20, property: 'Casa Principal', date: 'Hoy', status: 'pending', isRecurring: true, paymentMethodId: 'card-1', receiptUrl: 'http://localhost:3001/uploads/demo-recibo.pdf' },
+  { id: '2', title: 'Hipoteca - Apartamento', amount: 850.00, property: 'Apartamento', date: 'Ayer', status: 'paid', isRecurring: true, paymentMethodId: 'card-2', receiptUrl: null },
+  { id: '3', title: 'Reparación Vehículo', amount: 450.00, property: 'Vehículos', date: '22 Abr', status: 'paid', paymentMethodId: 'card-1', receiptUrl: 'http://localhost:3001/uploads/demo-taller.jpg' },
 ];

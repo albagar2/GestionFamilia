@@ -11,7 +11,7 @@ async function main() {
     update: {},
     create: {
       id: 'default-family-id',
-      name: 'Familia García',
+      name: 'Familia Residente',
     },
   });
 
@@ -30,7 +30,7 @@ async function main() {
   });
 
   // 3. Create Properties
-  const propertyNames = ['CALERA 43', 'MALAGA', 'LUCENA', 'MIJAS', 'CALERA 14', 'TETUÁN 5', 'SCENI'];
+  const propertyNames = ['VIVIENDA PRINCIPAL', 'APARTAMENTO PLAYA', 'CASA PUEBLO', 'CHALET', 'ESTUDIO', 'LOCAL COMERCIAL', 'VEHICULOS'];
   const properties: any = {};
 
   for (const name of propertyNames) {
@@ -38,7 +38,7 @@ async function main() {
       data: {
         name: name,
         familyId: family.id,
-        address: name === 'SCENI' ? 'Garaje/Vehículos' : `Calle ${name}, s/n`,
+        address: name === 'VEHICULOS' ? 'Garaje/Vehículos' : `Dirección ${name}`,
       }
     });
   }
@@ -46,15 +46,15 @@ async function main() {
   // 4. Create Expenses linked to Properties with new features
   const expenseData = [
     // CALERA 43
-    { category: 'SUMINISTROS', description: 'LUZ', property: 'CALERA 43', isRecurring: true, interval: 'MONTHLY' },
-    { category: 'SUMINISTROS', description: 'AGUA', property: 'CALERA 43', isRecurring: true, interval: 'MONTHLY' },
-    { category: 'SEGUROS', description: 'SECURITAS', property: 'CALERA 43', isRecurring: true, interval: 'MONTHLY' },
+    { category: 'SUMINISTROS', description: 'LUZ', property: 'VIVIENDA PRINCIPAL', isRecurring: true, interval: 'MONTHLY' },
+    { category: 'SUMINISTROS', description: 'AGUA', property: 'VIVIENDA PRINCIPAL', isRecurring: true, interval: 'MONTHLY' },
+    { category: 'SEGUROS', description: 'ALARMA', property: 'VIVIENDA PRINCIPAL', isRecurring: true, interval: 'MONTHLY' },
     
     // Impuestos con Alertas (Improvement 5)
     { 
       category: 'GASOIL / IBI', 
       description: 'FRAC IBI', 
-      property: 'CALERA 43', 
+      property: 'VIVIENDA PRINCIPAL', 
       amount: 120.50, 
       dueDate: new Date(2026, 5, 20), // Junio 2026
       isRecurring: true,
@@ -62,19 +62,19 @@ async function main() {
     },
 
     // MALAGA
-    { category: 'VIVIENDA', description: 'HIPOTECA', property: 'MALAGA', isRecurring: true, interval: 'MONTHLY', amount: 850 },
-    { category: 'SUMINISTROS', description: 'INTERNET', property: 'MALAGA', isRecurring: true, interval: 'MONTHLY', amount: 45 },
-    { category: 'VIVIENDA', description: 'CONTRIBUCION', property: 'MALAGA', dueDate: new Date(2026, 9, 10) },
+    { category: 'VIVIENDA', description: 'HIPOTECA', property: 'APARTAMENTO PLAYA', isRecurring: true, interval: 'MONTHLY', amount: 850 },
+    { category: 'SUMINISTROS', description: 'INTERNET', property: 'APARTAMENTO PLAYA', isRecurring: true, interval: 'MONTHLY', amount: 45 },
+    { category: 'VIVIENDA', description: 'CONTRIBUCION', property: 'APARTAMENTO PLAYA', dueDate: new Date(2026, 9, 10) },
 
     // SCENI (Improvement 3: Recibos)
     { 
       category: 'SCENI', 
-      description: 'HYUNDAI - Reparación motor', 
-      property: 'SCENI', 
+      description: 'VEHICULO 1 - Reparación motor', 
+      property: 'VEHICULOS', 
       amount: 450, 
       receiptUrl: 'https://example.com/recibos/reparacion_hyundai.pdf' 
     },
-    { category: 'SCENI', description: 'PEUGEOT', property: 'SCENI', isRecurring: true, interval: 'MONTHLY' },
+    { category: 'VEHICULOS', description: 'VEHICULO 2', property: 'VEHICULOS', isRecurring: true, interval: 'MONTHLY' },
   ];
 
   for (const item of expenseData) {
